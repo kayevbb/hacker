@@ -1,0 +1,48 @@
+
+
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% for pole in object_list %}
+        <div class="card">
+        <div class="card-header">
+            <span class="font-weight-bold"><a href="{% url 'pole_detail' pk=pole.pk%}"><p>{{ pole.title }}</p> </a></span> &middot;
+            <span class="text-muted"><p>{{ pole.author }} |
+                {{ pole.date }} </p></span>
+        </div>
+        <div class="card-body">
+            <p>{{ pole.body }} </p>
+            <div class="card-body">
+                 <span class="font-weight-bold"><a href="{% url 'pole_detail' pk=pole.pk%}"><p><img src="/media/{{ pole.avatar }}"></p> </a></span> &middot;
+
+            </div>
+            <div class="card-footer">
+                {% for comment in pole.comments.all %}
+                    <p>
+                        <span class="font-weight-bold">{{ comment.author }} &middot;</span>
+                        {{ comment }}
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+        <br />
+    {% endfor %}
+<div class="full-slider">
+    <div id="carousel-example-generic" class="carousel slide">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <!-- First slide -->
+            <div class="item active deepskyblue" data-ride="carousel" data-interval="5000">
+                <div class="carousel-caption">
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12"  ></div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
