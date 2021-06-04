@@ -1,3 +1,3 @@
-django==2.2.8
+django==2.2.21
 pillow
 social-auth-app-django==2.1.0
